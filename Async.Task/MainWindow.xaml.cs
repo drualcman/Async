@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,8 +25,12 @@ namespace Async.Tasks
         public MainWindow()
         {
             InitializeComponent();
-            CreateTask();
+            //CreateTask();
+            //RunTaskGroup();
+            ReturnTaskValue();
         }
+
+        #region Task
 
         void CreateTask()
         {
@@ -57,6 +62,28 @@ namespace Async.Tasks
             Task T7 = new Task(() => AddMessage("Ejecutando la tarea"));
             T7.Start();
             AddMessage("En el hilo principal");
+
+            var T8 = Task.Factory.StartNew(()=> AddMessage("Tarea inciada con TaskFactory"));
+            var T9 = Task.Run(()=> AddMessage("Tarea inciada con Task.Run"));
+
+            var T10 = Task.Run(() => 
+            {
+                WriteToOutput("Iniciando tarea 10...");
+                Thread.Sleep(1000);
+                WriteToOutput("Finalizando tarea 10...");
+            });
+
+            WriteToOutput("Esperando a la tarea 10");
+            T10.Wait();
+            WriteToOutput("La tarea 10 finalizo su ejecucion");
+        }
+
+        void WriteToOutput(string message)
+        {
+            Debug.WriteLine(
+                $"Mensaje: {message}, " +
+                $"Hilo actual: {Thread.CurrentThread.ManagedThreadId}");
+
         }
 
         void ShowMessage()
@@ -77,5 +104,59 @@ namespace Async.Tasks
                     $"Dispongo de {System.Diagnostics.Process.GetCurrentProcess().Threads.Count} hilos\n";
             });
         }
+
+        void RunTask(byte taskNumber)
+        {
+            WriteToOutput($"Iniciando tarea {taskNumber}");
+            Thread.Sleep((new Random()).Next(15000));
+            WriteToOutput($"Finalizado tarea {taskNumber}");
+        }
+
+        void RunTaskGroup()
+        {
+            Task[] taskGroup = new Task[]
+            {
+                Task.Run(()=> RunTask(1)),
+                Task.Run(()=> RunTask(2)),
+                Task.Run(()=> RunTask(3)),
+                Task.Run(()=> RunTask(4)),
+                Task.Run(()=> RunTask(5))
+            };
+            WriteToOutput("Esperando a que finalicen todas las tareas...");
+            Task.WaitAll(taskGroup);
+            WriteToOutput("Todas las tareas han finalizado");
+            WriteToOutput("Esperando a que finalice al menos una tarea...");
+            taskGroup = new Task[]
+            {
+                Task.Run(()=> RunTask(6)),
+                Task.Run(()=> RunTask(7)),
+                Task.Run(()=> RunTask(8)),
+                Task.Run(()=> RunTask(9)),
+                Task.Run(()=> RunTask(10))
+            };
+            Task.WaitAny(taskGroup);
+            WriteToOutput("Almenos una tarea finalizo");
+        }
+        #endregion
+
+        #region Task<T>
+        void ReturnTaskValue()
+        {
+            Task<int> T;
+            T = Task.Run<int>(() => new Random().Next(1000));
+            WriteToOutput($"Valor devuelto por la tarea {T.Result}");
+
+            Task<int> T2 = Task.Run(() =>
+            {
+                WriteToOutput("Obtener el numero aleatorio");
+                Thread.Sleep(10000);
+                return new Random().Next(1000);                
+            });
+            WriteToOutput($"Esperar el resultado de la tarea ...");
+            WriteToOutput($"La tarea devolvio el valor {T2.Result}");
+            WriteToOutput($"Fin de la ejecucion del metodo ReturnTaskValue");
+
+        }
+        #endregion
     }
 }
