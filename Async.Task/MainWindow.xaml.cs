@@ -27,7 +27,7 @@ namespace Async.Tasks
             InitializeComponent();
             //CreateTask();
             //RunTaskGroup();
-            ReturnTaskValue();
+            //ReturnTaskValue();
         }
 
         #region Task
@@ -91,19 +91,6 @@ namespace Async.Tasks
             MessageBox.Show("Ejecutando el metodo ShowMessage");
         }
 
-        void AddMessage(string message)
-        {
-            int currentThreadId = Thread.CurrentThread.ManagedThreadId;
-            this.Dispatcher.Invoke(() =>
-            {
-                Messages.Content +=
-                    $"Mensaje: {message}. " +
-                    $"Hilo actual: {currentThreadId}. " +
-                    $"Hilo invocado: { Thread.CurrentThread.ManagedThreadId}. " +
-                    $"Procesadores: {Environment.ProcessorCount}. " +
-                    $"Dispongo de {System.Diagnostics.Process.GetCurrentProcess().Threads.Count} hilos\n";
-            });
-        }
 
         void RunTask(byte taskNumber)
         {
@@ -157,6 +144,99 @@ namespace Async.Tasks
             WriteToOutput($"Fin de la ejecucion del metodo ReturnTaskValue");
 
         }
+
         #endregion
+
+
+
+        #region XAML
+        void AddMessage(string message)
+        {
+            int currentThreadId = Thread.CurrentThread.ManagedThreadId;
+            this.Dispatcher.Invoke(() =>
+            {
+                Messages.Content +=
+                    $"Mensaje: {message}. " +
+                    $"Hilo actual: {currentThreadId}. " +
+                    $"Hilo invocado: { Thread.CurrentThread.ManagedThreadId}. " +
+                    $"Procesadores: {Environment.ProcessorCount}. " +
+                    $"Dispongo de {System.Diagnostics.Process.GetCurrentProcess().Threads.Count} hilos\n";
+            });
+        }
+
+        CancellationTokenSource CTS;
+        CancellationToken CT;
+        Task LongRunningTask;
+
+        private void StartTask_Click(object sender, RoutedEventArgs e)
+        {
+            CTS = new CancellationTokenSource();
+            CT = CTS.Token;
+
+            Task.Run(() => 
+            {
+                LongRunningTask = Task.Run(() =>
+                {
+                    DoLongRunningTask(CT);
+                }, CT);
+                try
+                {
+                    LongRunningTask.Wait();
+                }
+                catch (AggregateException ae)
+                {
+                    AddMessage($"AggregateException El usuario selecciono cancelar. {ae.Message}");
+                    foreach (var inner in ae.InnerExceptions)
+                    {
+                        if (inner is TaskCanceledException)
+                        {
+                            AddMessage($"TaskCanceledException manejado. {inner.Message}");
+                        }
+                        else
+                        {
+                            AddMessage($"Otro error occurio. {inner.Message}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    AddMessage($"Hubo un error {ex.Message}");
+                }
+            });
+        }
+
+        private void DoLongRunningTask(CancellationToken ct)
+        {
+            int[] IDs = { 1, 3, 4, 7, 11, 18, 29, 47, 76, 123 };
+            for (int i = 0; i < IDs.Length && !ct.IsCancellationRequested; i++)
+            {
+                AddMessage($"Procesando ID: {IDs[i]}");
+                Thread.Sleep(1000);
+            }
+
+            if (ct.IsCancellationRequested)
+            {
+                AddMessage($"Proceso cancelado.");
+                //si queremos saber si ha sido cancelada o no debemos enviar una excepcion
+                ct.ThrowIfCancellationRequested();
+                //throw new OperationCanceledException(ct);
+                //throw new OperationCanceledException("El usuario selecciono cancelar la tarea", ct);
+            }
+            else
+            {
+                AddMessage($"Proceso finalizado correctamente.");
+            }
+        }
+
+        private void CancelTask_Click(object sender, RoutedEventArgs e)
+        {
+            CTS.Cancel();
+        }
+        private void ShowStatus_Click(object sender, RoutedEventArgs e)
+        {
+            AddMessage($"Estado de la tarea: {LongRunningTask.Status}");
+        }
+        #endregion
+
     }
 }
