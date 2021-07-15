@@ -1,0 +1,16 @@
+﻿<Window x:Class="Async.APM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Async.APM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Label Content="Introduce una URL"  Height="38" />
+        <TextBox x:Name="UrlToValidate" Height="38" />
+        <Button x:Name="ValidateUrl" Click="ValidateUrl_Click" 
+                Content="Validar URL" Width="100" Height="38" />
+        <Label x:Name="Result" Height="38" />
+    </StackPanel>
+</Window>
