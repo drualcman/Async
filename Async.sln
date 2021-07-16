@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async.APM", "Async.APM\Asyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decepcion", "Decepcion\Decepcion.csproj", "{032960CE-B25B-4A23-B55E-084446FBDEEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.AwaitableExceptions", "Async.AwaitableExceptions\Async.AwaitableExceptions.csproj", "{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{032960CE-B25B-4A23-B55E-084446FBDEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032960CE-B25B-4A23-B55E-084446FBDEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032960CE-B25B-4A23-B55E-084446FBDEEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
