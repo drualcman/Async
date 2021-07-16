@@ -13,12 +13,12 @@ namespace Async.Paralel
         static void Main(string[] args)
         {
             //RunParallelTask();
-            //ParallelLoopIterate();
+            ParallelLoopIterate();
             //RunLINQ();
             //RunPLINQ();
             //RunContinuationTasks();
             //RunNestedTasks();
-            RunNestedTasksWithChild();
+            //RunNestedTasksWithChild();
             Console.WriteLine("Presione <enter> para finalizar");
             Console.Read();
             //Console.WriteLine($"Thread: {Thread.CurrentThread.ManagedThreadId}");
@@ -53,8 +53,7 @@ namespace Async.Paralel
             Parallel.For(0, 5, i =>
              {
                  SquareNumbers[i] = i * i;
-                 Console
-                 .WriteLine($"Calculando el cuadrado de {i}");
+                 Console.WriteLine($"Calculando el cuadrado de {i}");
              });
 
             Parallel.ForEach(SquareNumbers, n => 
