@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decepcion", "Decepcion\Dece
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.AwaitableExceptions", "Async.AwaitableExceptions\Async.AwaitableExceptions.csproj", "{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Multihilo.Lock", "Async.Multihilo.Lock\Async.Multihilo.Lock.csproj", "{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5C6C30C-39D4-45B3-9DD9-EEAF657214BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
