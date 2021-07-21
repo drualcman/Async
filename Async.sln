@@ -29,9 +29,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async.AwaitableExceptions",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async.Multihilo.Lock", "Async.Multihilo.Lock\Async.Multihilo.Lock.csproj", "{1A8F46D6-5FE1-426B-9943-03DBCCD6CB7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.ManualResetEventSlimDemo", "Async.Primitives.ManualAsync\Async.Primitives.ManualResetEventSlimDemo.csproj", "{67688B46-1649-4753-8E69-B8EDB7CDEEF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async.Primitives.ManualResetEventSlimDemo", "Async.Primitives.ManualAsync\Async.Primitives.ManualResetEventSlimDemo.csproj", "{67688B46-1649-4753-8E69-B8EDB7CDEEF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.SemaphoreSlimDemo", "Async.Primitives.SemaphoreSlimDemo\Async.Primitives.SemaphoreSlimDemo.csproj", "{282205A8-6C40-4D92-A816-A31E88EBCDEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async.Primitives.SemaphoreSlimDemo", "Async.Primitives.SemaphoreSlimDemo\Async.Primitives.SemaphoreSlimDemo.csproj", "{282205A8-6C40-4D92-A816-A31E88EBCDEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.CountdownEventDemo", "Async.Primitives.CountdownEventDemo\Async.Primitives.CountdownEventDemo.csproj", "{687B791C-FD5E-4883-AAD3-59BB73069F60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.ReadWriteLockSlinDemo", "Async.Primitives.ReadWriteLockSlinDemo\Async.Primitives.ReadWriteLockSlinDemo.csproj", "{B8945759-C51F-4687-8357-C1612585DD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.BarrierDemo", "Async.Primitives.Barrier\Async.Primitives.BarrierDemo.csproj", "{C4DCE313-36B2-4588-8836-BE04A454C01F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async.Primitives.MutexDemo", "Async.Primitives.Mutex\Async.Primitives.MutexDemo.csproj", "{DF030729-822A-431B-9AFB-D500A1985A8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCollections", "DemoCollections\DemoCollections.csproj", "{3C322EE4-2843-42DC-B10A-5095A0EBBBB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +109,26 @@ Global
 		{282205A8-6C40-4D92-A816-A31E88EBCDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{282205A8-6C40-4D92-A816-A31E88EBCDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{282205A8-6C40-4D92-A816-A31E88EBCDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{687B791C-FD5E-4883-AAD3-59BB73069F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687B791C-FD5E-4883-AAD3-59BB73069F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687B791C-FD5E-4883-AAD3-59BB73069F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687B791C-FD5E-4883-AAD3-59BB73069F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8945759-C51F-4687-8357-C1612585DD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8945759-C51F-4687-8357-C1612585DD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8945759-C51F-4687-8357-C1612585DD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8945759-C51F-4687-8357-C1612585DD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4DCE313-36B2-4588-8836-BE04A454C01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4DCE313-36B2-4588-8836-BE04A454C01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4DCE313-36B2-4588-8836-BE04A454C01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4DCE313-36B2-4588-8836-BE04A454C01F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF030729-822A-431B-9AFB-D500A1985A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF030729-822A-431B-9AFB-D500A1985A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF030729-822A-431B-9AFB-D500A1985A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF030729-822A-431B-9AFB-D500A1985A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C322EE4-2843-42DC-B10A-5095A0EBBBB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C322EE4-2843-42DC-B10A-5095A0EBBBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C322EE4-2843-42DC-B10A-5095A0EBBBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C322EE4-2843-42DC-B10A-5095A0EBBBB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
